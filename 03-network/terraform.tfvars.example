@@ -1,0 +1,29 @@
+# Copy to terraform.tfvars in this folder. The network team edits THIS file to open the network, one rule at a time.
+# Rule names, priorities and ranges below are examples: use them one at a time during the exercises.
+
+# Exercise 3 (the app team cannot see the subnet): set this to true.
+# grant_app_team_subnet_access = true
+
+# Exercise 4 (SSH through Identity-Aware Proxy, no public IP needed): add this rule.
+# firewall_allow_rules = {
+#   allow-iap-ssh = {
+#     description = "SSH from Identity-Aware Proxy"
+#     ports       = ["22"]
+#     ranges      = ["35.235.240.0/20"]
+#     target_tags = ["ssh"]
+#   }
+# }
+
+# Exercise 5 (machines need to download packages): turn on NAT and allow outbound web traffic.
+# enable_nat = true
+# firewall_allow_rules = {
+#   allow-egress-web = {
+#     description = "Outbound HTTP and HTTPS"
+#     direction   = "EGRESS"
+#     ports       = ["80", "443"]
+#     ranges      = ["0.0.0.0/0"]
+#   }
+# }
+
+# Exercise 6 (GKE cluster fails to create in the shared subnet): set this to true.
+# enable_gke_sharing = true

@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars in this folder.
+ops_alert_email = "ops@example.com"
+budget_amount   = 5000  # in the currency of your billing account
+budget_currency = "INR" # gcloud billing accounts list shows it

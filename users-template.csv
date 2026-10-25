@@ -1,0 +1,7 @@
+First Name [Required],Last Name [Required],Email Address [Required],Password [Required],Org Unit Path [Required],Change Password at Next Sign-In
+Asha,Admin,asha.admin@example.com,ChangeMe-2026!,/,TRUE
+Nikhil,Network,nikhil.net@example.com,ChangeMe-2026!,/,TRUE
+Omar,Ops,omar.ops@example.com,ChangeMe-2026!,/,TRUE
+Ines,Infra,ines.infra@example.com,ChangeMe-2026!,/,TRUE
+Arjun,App,arjun.app@example.com,ChangeMe-2026!,/,TRUE
+Priya,App,priya.app@example.com,ChangeMe-2026!,/,TRUE

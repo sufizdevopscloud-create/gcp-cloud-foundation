@@ -1,0 +1,8 @@
+# Copy this file to backend.tf AFTER the first apply, then run:
+#   terraform init -backend-config=../backend.hcl -migrate-state
+# Terraform then moves this stage's own state from your laptop into the bucket it just created.
+terraform {
+  backend "gcs" {
+    prefix = "00-bootstrap"
+  }
+}

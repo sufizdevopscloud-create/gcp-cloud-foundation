@@ -1,0 +1,16 @@
+# Copy this file to terraform.tfvars and fill in your own values. terraform.tfvars is ignored by Git.
+# Every stage reads it, together with generated.tfvars (written for you by stage 00):
+#   terraform plan -var-file=../terraform.tfvars -var-file=../generated.tfvars
+
+# gcloud organizations list     -> the number in the ID column
+org_id = "123456789012"
+
+# gcloud billing accounts list  -> the ACCOUNT_ID column
+billing_account = "XXXXXX-XXXXXX-XXXXXX"
+
+# The primary domain of your Cloud Identity account, for example example.com
+domain = "example.com"
+
+# A short prefix for every name and project id the landing zone creates (lowercase letters and digits, 2 to 6 characters).
+prefix = "lz"
+region = "asia-south1" # Mumbai

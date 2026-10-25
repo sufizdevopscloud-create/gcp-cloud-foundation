@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars in this folder (Terraform loads it automatically).
+# Create the users in the Cloud Identity admin console first (see ../users-template.csv), then list them here.
+group_members = {
+  org_admins        = ["asha.admin@example.com"]
+  network_admins    = ["nikhil.net@example.com"]
+  operations_admins = ["omar.ops@example.com"]
+  infra_team        = ["ines.infra@example.com"]
+  app_team          = ["arjun.app@example.com", "priya.app@example.com"]
+}
+
+# Exercise 2: after the Infra team grants roles by hand, you can also add them in code:
+# extra_grants = [
+#   { group = "app_team", folder = "dev", role = "roles/compute.instanceAdmin.v1" },
+# ]

@@ -1,0 +1,13 @@
+# Terraform working files and state: never commit these
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+.DS_Store
+
+# Your own values and the files the bootstrap stage generates
+terraform.tfvars
+generated.tfvars
+backend.hcl
+00-bootstrap/backend.tf
+.terraform.lock.hcl
