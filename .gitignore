@@ -11,3 +11,5 @@ generated.tfvars
 backend.hcl
 00-bootstrap/backend.tf
 .terraform.lock.hcl
+tfplan
+*.tfplan
