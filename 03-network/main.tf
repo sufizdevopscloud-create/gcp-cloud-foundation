@@ -32,9 +32,8 @@ locals {
 
   # environment name -> the service project that lives in that environment's folder
   service_projects = {
-    dev     = local.projects["dev-app"]
-    staging = local.projects["staging-app"]
-    prod    = local.projects["prod-app"]
+    dev  = local.projects["dev-app"]
+    prod = local.projects["prod-app"]
   }
 
   app_team = "group:gcp-app-team@${var.domain}"

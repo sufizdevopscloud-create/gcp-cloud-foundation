@@ -1,6 +1,6 @@
 # Stage 1 · Resource hierarchy
 
-Five folders (Networking, Operations, Development, Staging, Production) and one project in each, with labels and the APIs each project needs.
+Four folders (Networking, Operations, Development, Production) and one project in each, with labels and the APIs each project needs.
 
 ```bash
 terraform init -backend-config=../backend.hcl

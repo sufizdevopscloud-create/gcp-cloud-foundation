@@ -8,7 +8,6 @@ Organization
 ├── Networking    → project: Shared VPC host         (network team)
 ├── Operations    → project: central logs, dashboards, budgets   (operations team)
 ├── Development   → project: app team builds here
-├── Staging       → project: testing before release (UAT)
 └── Production    → project: real users
 
 5 teams (Cloud Identity groups): GCP Org Admins · Network Admins · Operations Admins · Infra Team · App Team
@@ -17,7 +16,7 @@ Organization
 | Stage | Folder | What it builds |
 |---|---|---|
 | 0 | [`00-bootstrap`](00-bootstrap) | The seed project and the **GCS bucket that stores all Terraform state** |
-| 1 | [`01-hierarchy`](01-hierarchy) | **Resource hierarchy**: 5 folders and 5 projects (host, ops, dev, staging, prod) |
+| 1 | [`01-hierarchy`](01-hierarchy) | **Resource hierarchy**: 4 folders and 4 projects (host, ops, dev, prod) |
 | 2 | [`02-onboarding`](02-onboarding) | **User onboarding**: 5 Cloud Identity groups and the roles they get on each folder |
 | 3 | [`03-network`](03-network) | **Networking**: Shared VPC, one subnet per environment, **everything blocked** until the network team opens it |
 | 4 | [`04-security`](04-security) | **Security**: organization policies, KMS key, least-privilege custom role |
@@ -27,7 +26,7 @@ Organization
 
 1. **A Cloud Identity (free) account for your domain.** Free Cloud Identity gives you an organization and up to 50 users. Sign up at <https://workspace.google.com/signup/gcpidentity/welcome>, verify your domain with a DNS TXT record, and create the first admin user. Google then creates your **organization** automatically (find it with `gcloud organizations list`).
    *If your organization has no domain attached, Terraform stage 2 stops with a clear message: groups only exist inside a Cloud Identity domain.*
-2. **A billing account** you can link projects to (`gcloud billing accounts list`). The signed-in admin needs **Billing Account User** on it. Check the project quota: a new billing account may allow only about 5 linked projects, and this lab needs 6.
+2. **A billing account** you can link projects to (`gcloud billing accounts list`). The signed-in admin needs **Billing Account User** on it. Check the project quota: a new billing account may allow only about 5 linked projects, and this lab needs 5 (seed, network host, operations, development, production).
 3. **Tools:** `gcloud`, `terraform` 1.5 or newer, `git`.
 4. **Sign in as the Cloud Identity super admin** (an Organization Administrator who is also a Groups Admin):
 

@@ -12,4 +12,4 @@ gcloud auth application-default set-quota-project $(terraform output -raw seed_p
 ```
 
 **Check:** `gcloud storage ls gs://$(terraform output -raw state_bucket)/` shows a `00-bootstrap/` folder, and the bucket has versioning on
-(`gcloud storage buckets describe gs://... --format="value(versioning.enabled)"` prints `True`).
+(`gcloud storage buckets describe gs://... --format="value(versioning_enabled)"` prints `True`).

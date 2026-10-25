@@ -4,8 +4,10 @@
 #   ├── Networking     one project that owns the Shared VPC (the "host project")
 #   ├── Operations     one project for central logging and monitoring
 #   ├── Development    one project where the app team builds
-#   ├── Staging        one project for testing before release (UAT)
 #   └── Production     one project that serves real users
+#
+# A Staging (UAT) folder and project is the obvious next addition. We leave it out because a new billing account allows only
+# about 5 billing-linked projects, and this lab uses exactly five: seed, network host, operations, development and production.
 #
 # Why folders? Policies and access given to a folder flow down to every project inside it, so we set rules once per
 # environment instead of once per project.
@@ -35,7 +37,6 @@ locals {
     networking = "Networking"
     operations = "Operations"
     dev        = "Development"
-    staging    = "Staging"
     prod       = "Production"
   }
 
@@ -49,6 +50,7 @@ locals {
     "artifactregistry.googleapis.com",
     "sqladmin.googleapis.com",
     "servicenetworking.googleapis.com",
+    "bigquery.googleapis.com",
   ]
 
   # One project per purpose. The key is the short name; the real project id becomes <prefix>-<short name>-<random>.
@@ -71,13 +73,6 @@ locals {
       name   = "Dev App"
       folder = "dev"
       env    = "dev"
-      team   = "app"
-      apis   = local.app_apis
-    }
-    staging-app = {
-      name   = "Staging App"
-      folder = "staging"
-      env    = "staging"
       team   = "app"
       apis   = local.app_apis
     }

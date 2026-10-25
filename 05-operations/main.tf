@@ -4,7 +4,7 @@
 #   into one log bucket in the Operations project, so the operations team has one place to look, and cannot be bypassed by an
 #   app team deleting logs in its own project.
 # Monitoring: the Operations project gets a "metrics scope" that includes the app projects, so one dashboard shows virtual
-#   machines and GKE clusters from Development, Staging and Production together.
+#   machines and GKE clusters from Development and Production together.
 # Billing: a budget with e-mail alerts, so cost surprises reach the Operations team early.
 
 terraform {
@@ -33,7 +33,7 @@ locals {
   numbers = data.terraform_remote_state.hierarchy.outputs.project_numbers
   ops     = local.ids["ops"]
 
-  monitored = ["dev-app", "staging-app", "prod-app", "net-host"]
+  monitored = ["dev-app", "prod-app", "net-host"]
   bucket_id = "central-audit"
   bucket    = "projects/${local.ops}/locations/${var.region}/buckets/${local.bucket_id}"
 }

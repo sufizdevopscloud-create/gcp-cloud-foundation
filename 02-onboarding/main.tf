@@ -33,7 +33,7 @@ locals {
   h           = data.terraform_remote_state.hierarchy.outputs
   org         = "organizations/${var.org_id}"
   folder      = local.h.folder_ids
-  env_folders = ["dev", "staging", "prod"]
+  env_folders = ["dev", "prod"]
 
   # ---------------------------------------------------------------- the five teams
   groups = {
@@ -60,7 +60,7 @@ locals {
     app_team = {
       id          = "gcp-app-team"
       display     = "GCP App Team"
-      description = "Builds and runs the applications in Development, Staging and Production."
+      description = "Builds and runs the applications in Development and Production."
     }
   }
 
@@ -94,20 +94,17 @@ locals {
     network_admins = {
       networking = ["roles/compute.networkAdmin", "roles/compute.securityAdmin", "roles/compute.xpnAdmin", "roles/logging.viewer"]
       dev        = ["roles/compute.networkViewer"]
-      staging    = ["roles/compute.networkViewer"]
       prod       = ["roles/compute.networkViewer"]
     }
     operations_admins = {
       operations = ["roles/logging.admin", "roles/monitoring.admin"]
       dev        = ["roles/monitoring.viewer", "roles/logging.viewer"]
-      staging    = ["roles/monitoring.viewer", "roles/logging.viewer"]
       prod       = ["roles/monitoring.viewer", "roles/logging.viewer"]
     }
     # The app team starts with READ-ONLY access. To create anything they must ask the Infra team (exercise).
     app_team = {
-      dev     = ["roles/viewer"]
-      staging = ["roles/viewer"]
-      prod    = ["roles/viewer"]
+      dev  = ["roles/viewer"]
+      prod = ["roles/viewer"]
     }
   }
 
@@ -188,7 +185,7 @@ resource "google_folder_iam_member" "folder" {
   member   = local.member[each.value.group]
 }
 
-# The Infra team can change IAM on the three environment folders, but ONLY by granting roles from the approved list.
+# The Infra team can change IAM on the two environment folders, but ONLY by granting roles from the approved list.
 resource "google_folder_iam_member" "infra_iam_admin" {
   for_each = toset(local.env_folders)
   folder   = local.folder[each.value]

@@ -6,9 +6,8 @@ variable "subnets" {
     services = string
   }))
   default = {
-    dev     = { cidr = "10.10.0.0/20", pods = "10.64.0.0/16", services = "10.65.0.0/20" }
-    staging = { cidr = "10.20.0.0/20", pods = "10.66.0.0/16", services = "10.67.0.0/20" }
-    prod    = { cidr = "10.30.0.0/20", pods = "10.68.0.0/16", services = "10.69.0.0/20" }
+    dev  = { cidr = "10.10.0.0/20", pods = "10.64.0.0/16", services = "10.65.0.0/20" }
+    prod = { cidr = "10.30.0.0/20", pods = "10.68.0.0/16", services = "10.69.0.0/20" }
   }
 }
 
@@ -50,7 +49,7 @@ variable "extra_subnet_users" {
 }
 
 variable "enable_gke_sharing" {
-  description = "Grant the GKE service accounts of the dev and staging projects what they need to build clusters in the shared subnets."
+  description = "Grant the GKE service accounts of the dev project what it needs to build clusters in the shared subnets."
   type        = bool
   default     = false
 }
